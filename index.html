@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Heart Disease Prediction</h1>
+        <p class="text-center">Please fill in the details below for prediction:</p>
+        <form action="/predict" method="POST">
+
+            <!-- Age -->
+            <div class="mb-3">
+                <label for="age" class="form-label">Age</label>
+                <input type="number" class="form-control" id="age" name="age" placeholder="Enter your age" required>
+            </div>
+
+            <!-- Gender -->
+            <div class="mb-3">
+                <label for="gender" class="form-label">Sex</label>
+                <select class="form-select" id="gender" name="gender" required>
+                    <option value="">Select Sex</option>
+                    <option value="1">Male</option>
+                    <option value="0">Female</option>
+                </select>
+            </div>
+
+            <!-- Chest Pain Type -->
+            <div class="mb-3">
+                <label for="chest_pain" class="form-label">Chest Pain Type</label>
+                <select class="form-select" id="chest_pain" name="chest_pain" required>
+                    <option value="">Select Chest Pain Type</option>
+                    <option value="1">Typical Angina</option>
+                    <option value="2">Atypical Angina</option>
+                    <option value="3">Non-Anginal Pain</option>
+                    <option value="4">Asymptomatic</option>
+                </select>
+            </div>
+
+            <!-- Resting Blood Pressure -->
+            <div class="mb-3">
+                <label for="resting_bp" class="form-label">Resting Blood Pressure (mm Hg)</label>
+                <input type="number" class="form-control" id="resting_bp" name="resting_bp" placeholder="Enter resting BP" required>
+            </div>
+
+            <!-- Cholesterol -->
+            <div class="mb-3">
+                <label for="cholesterol" class="form-label">Cholesterol Level (mg/dL)</label>
+                <input type="number" class="form-control" id="cholesterol" name="cholesterol" placeholder="Enter cholesterol level" required>
+            </div>
+
+            <!-- Fasting Blood Sugar -->
+            <div class="mb-3">
+                <label for="fasting_bs" class="form-label">Fasting Blood Sugar > 120 mg/dL?</label>
+                <select class="form-select" id="fasting_bs" name="fasting_bs" required>
+                    <option value="">Select Option</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <!-- Resting ECG Results -->
+            <div class="mb-3">
+                <label for="rest_ecg" class="form-label">Resting ECG Results</label>
+                <select class="form-select" id="rest_ecg" name="rest_ecg" required>
+                    <option value="">Select ECG Result</option>
+                    <option value="0">Normal</option>
+                    <option value="1">Having ST-T Abnormality</option>
+                    <option value="2">Left Ventricular Hypertrophy</option>
+                </select>
+            </div>
+
+            <!-- Maximum Heart Rate -->
+            <div class="mb-3">
+                <label for="max_hr" class="form-label">Maximum Heart Rate Achieved</label>
+                <input type="number" class="form-control" id="max_hr" name="max_hr" placeholder="Enter max heart rate" required>
+            </div>
+
+            <!-- Exercise-Induced Angina -->
+            <div class="mb-3">
+                <label for="exercise_angina" class="form-label">Exercise-Induced Angina</label>
+                <select class="form-select" id="exercise_angina" name="exercise_angina" required>
+                    <option value="">Select Option</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <!-- ST Depression -->
+            <div class="mb-3">
+                <label for="st_depression" class="form-label">ST Depression Induced by Exercise</label>
+                <input type="number" class="form-control" id="st_depression" name="st_depression" placeholder="Enter ST depression value" step="0.1" required>
+            </div>
+
+            <!-- Slope of Peak Exercise ST Segment -->
+            <div class="mb-3">
+                <label for="slope" class="form-label">Slope of Peak Exercise ST Segment</label>
+                <select class="form-select" id="slope" name="slope" required>
+                    <option value="">Select Slope</option>
+                    <option value="1">Upsloping</option>
+                    <option value="2">Flat</option>
+                    <option value="3">Downsloping</option>
+                </select>
+            </div>
+
+            <!-- Number of Major Vessels -->
+            <div class="mb-3">
+                <label for="ca" class="form-label">Number of Major Vessels Colored by Fluoroscopy</label>
+                <select class="form-select" id="ca" name="ca" required>
+                    <option value="">Select Number</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+
+            <!-- Thalassemia -->
+            <div class="mb-3">
+                <label for="thal" class="form-label">Thalassemia</label>
+                <select class="form-select" id="thal" name="thal" required>
+                    <option value="">Select Thalassemia Type</option>
+                    <option value="3">Normal</option>
+                    <option value="6">Fixed Defect</option>
+                    <option value="7">Reversible Defect</option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary w-100">Predict</button>
+        </form>
+
+        <!-- Display Prediction -->
+        <div class="mt-4">
+            {% if prediction_text %}
+                <div class="alert alert-info text-center">
+                    <strong>{{ prediction_text }}</strong>
+                </div>
+            {% endif %}
+            {% if probability_text %}
+                <div class="alert alert-warning text-center">
+                    <strong>{{ probability_text }}</strong>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

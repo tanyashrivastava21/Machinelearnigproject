@@ -1,0 +1,189 @@
+/* General Body Styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #8f5b9ed8, #8f5b9ed8);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Form Container */
+.container {
+    position: relative;
+    background: url('new image file.jpg') no-repeat center center;
+    background-size: cover;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    max-width: 1225px;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Semi-Transparent Overlay for Better Text Visibility */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Black overlay with 50% transparency */
+    border-radius: 15px;
+    z-index: 1;
+}
+
+/* Ensures All Text and Inputs Are Visible Above the Overlay */
+.container * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Title Styling */
+h1 {
+    font-size: 2.5rem;
+    color: #ffffff; /* White text for contrast */
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1rem;
+    color: #eaeaea; /* Light gray text */
+    margin-bottom: 30px;
+}
+
+/* Heart Icon */
+.container:before {
+    content: '❤';
+    font-size: 4rem;
+    color: #ff6b6b;
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: heartbeat 1.5s infinite;
+}
+
+/* Heartbeat Animation */
+@keyframes heartbeat {
+    0%, 100% {
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.2);
+    }
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Left and Right Columns */
+.form-left,
+.form-right {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Form Fields Styling */
+input[type="number"], 
+select {
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    background: #f7f7f7;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus,
+select:focus {
+    border-color: #ff6b6b;
+    box-shadow: 0 0 5px rgba(255, 107, 107, 0.5);
+    outline: none;
+}
+
+/* Add Gap Between Specific Fields */
+input#age {
+    margin-bottom: 40px; /* Extra gap for better spacing */
+}
+
+/* Labels Styling */
+label {
+    font-size: 1rem;
+    color: #ffffff; /* White text for better readability */
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* Submit Button */
+button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(90deg, #ff6b6b, #ff8e53);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #ff8e53, #ff6b6b);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Prediction Result Styling */
+.alert {
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #fff;
+}
+
+.alert-info {
+    background-color:  #821e9bd8;
+}
+
+.alert-warning {
+    background-color:#99c3c3;
+}
+
+/* Footer Text */
+footer {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #eaeaea; /* Light gray for consistency */
+    text-align: center;
+}
+
+footer span {
+    color: #ff6b6b;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .form-left, .form-right {
+        min-width: 100%;
+    }
+}
